@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: "Большая Голубая Дыра Белиза",
     link: "https://lh3.googleusercontent.com/p/AF1QipNuzyi09dnodFNeJB3I5WfF_dmaWSGfPM_zbow3=s1360-w1360-h1020",
@@ -30,3 +30,23 @@ const initialCards = [
     alt: "Скалистый берег озера Байкал",
   }
 ];
+
+
+
+export const cardsContainer = document.querySelector('.places__list');
+export const cardTemplate = document.querySelector('#card-template').content;
+
+
+
+  //  попапы
+ export const editButton = document.querySelector('.profile__edit-button');
+ export const addButton = document.querySelector('.profile__add-button');
+ export const popupEdit = document.querySelector('.popup_type_edit');
+ export const popupNewCard = document.querySelector('.popup_type_new-card');
+ export const popupImage = document.querySelector('.popup_type_image');
+ export const closeButtons = document.querySelectorAll('.popup__close');
+ export const overlay = document.querySelector('.popup');
+ 
+
+
+ 
