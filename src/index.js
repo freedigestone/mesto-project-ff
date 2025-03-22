@@ -1,4 +1,4 @@
-import { initialCards, cardsContainer, editButton, addButton, popupEdit, popupNewCard, popupImage } from './scripts/constants.js';
+import { initialCards, cardsContainer, editButton, addButton, popupEdit, popupNewCard, popupImage, closeButtons } from './scripts/constants.js';
 import { openPopup, closePopup } from './scripts/modal.js';
 import { createCard, handleRemoveCard, handleLikeCard } from './scripts/card.js';
 import './pages/index.css';
@@ -71,8 +71,14 @@ function setModalListeners() {
       handleRemoveCard,
       handleLikeCard
     );
+    
     newCard.querySelector('.card__image').addEventListener('click', () => {
       handleOpenPopup({ name: cardName, link: cardLink });
+      if (typeof onImageClick === 'function') { 
+        cardImage.addEventListener('click', function() { 
+          onImageClick(cardData); 
+        })
+      }
     });
 
     cardsContainer.prepend(newCard);
@@ -87,6 +93,15 @@ function setModalListeners() {
     openPopup(popupNewCard);
   });
 }
+
+closeButtons.forEach(button => {
+  button.addEventListener('click', (event) => {
+    const popup = event.target.closest('.popup');
+    if (popup) {
+      closePopup(popup);
+    }
+  });
+});
 
 setModalListeners();
 renderCards();

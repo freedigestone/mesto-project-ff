@@ -1,4 +1,4 @@
-import { closeButtons} from "./constants.js";
+
 
 export function openPopup(popup) {
   popup.classList.add('popup_is-animated');
@@ -20,14 +20,6 @@ export function closePopup(popup) {
     }, 600); // Задержка должна быть равна времени анимации (0.6s = 600ms)
 }
 
-closeButtons.forEach(button => {
-  button.addEventListener('click', (event) => {
-    const popup = event.target.closest('.popup');
-    if (popup) {
-      closePopup(popup);
-    }
-  });
-});
 
 function closePopupOnEscape(event) {
   if (event.key === 'Escape') {
