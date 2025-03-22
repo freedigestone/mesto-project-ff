@@ -72,13 +72,15 @@ function setModalListeners() {
       handleLikeCard
     );
     
+    
     newCard.querySelector('.card__image').addEventListener('click', () => {
       handleOpenPopup({ name: cardName, link: cardLink });
+
       if (typeof onImageClick === 'function') { 
         cardImage.addEventListener('click', function() { 
           onImageClick(cardData); 
-        })
-      }
+         })
+     }
     });
 
     cardsContainer.prepend(newCard);
