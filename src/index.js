@@ -67,7 +67,8 @@ function setModalListeners() {
     const newCard = createCard(
       { name: cardName, link: cardLink },
       handleRemoveCard,
-      handleLikeCard
+      handleLikeCard,
+      handleOpenPopup
     );
     
     
