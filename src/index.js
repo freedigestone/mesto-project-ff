@@ -17,14 +17,12 @@ function handleOpenPopup(cardData) {
 
 function renderCards() {
   initialCards.forEach(function(cardData) {
-    const cardElement = createCard(
-      cardData,
-      handleRemoveCard,
-      handleLikeCard
+    const cardElement = createCard( 
+      cardData, 
+      handleRemoveCard, 
+       handleLikeCard,
+       handleOpenPopup
     );
-    cardElement.querySelector('.card__image').addEventListener('click', () => {
-      handleOpenPopup(cardData);
-    });
     cardsContainer.append(cardElement);
   });
 }
