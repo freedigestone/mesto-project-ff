@@ -46,7 +46,20 @@ export const cardTemplate = document.querySelector('#card-template').content;
  export const popupImage = document.querySelector('.popup_type_image');
  export const closeButtons = document.querySelectorAll('.popup__close');
  export const overlay = document.querySelector('.popup');
- 
+
+ export const popupAvatar = document.querySelector('.popup_type_avatar');
+ export const avatarForm = popupAvatar.querySelector('.popup__form');
+ export const avatarInput = avatarForm.querySelector('.popup__input_type_avatar');
+ export const avatarEditButton = document.querySelector('.profile__image-edit');
+ // scripts/constants.js
+
+export const profileName = document.querySelector('.profile__title');
+export const profileJob = document.querySelector('.profile__description');
+export const profileAvatar = document.querySelector('.profile__image'); // проверь, какой у тебя класс
+export const popupConfirm = document.querySelector('.popup_type_confirm');
+export const confirmForm = popupConfirm.querySelector('.popup__form');
+
+
 
 
  

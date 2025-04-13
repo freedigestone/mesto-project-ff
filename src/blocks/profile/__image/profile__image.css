@@ -7,6 +7,9 @@
   background-size: cover;
   background-position: center;
   margin: 0 29px 0 0;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 740px) {
@@ -19,4 +22,35 @@
   .profile__image {
     margin-right: 0;
   }
+}
+
+.profile__image-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+
+
+.profile__image-edit {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.profile__image:hover .profile__image-edit {
+  opacity: 0.7;
+}
+
+.profile__image-edit img {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
 }
