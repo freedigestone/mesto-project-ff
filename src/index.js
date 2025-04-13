@@ -171,8 +171,9 @@ confirmForm.addEventListener('submit', (evt) => {
 
   deleteCard(cardIdToDelete)
     .then(() => {
+      
       if (cardToDelete) {
-        cardToDelete.remove();
+        deleteCardFromDOM(cardToDelete);  
       }
       closePopup(popupConfirm);
       cardToDelete = null;
@@ -203,7 +204,8 @@ function setCardForDeletion(cardElement, cardId) {
 }
 
 // экспортируем переменные для удаления
-export { cardToDelete, cardIdToDelete };
-import logoPath from './images/logo.svg';
 
+
+
+import logoPath from './images/logo.svg';
 document.querySelector('.header__logo').src = logoPath;

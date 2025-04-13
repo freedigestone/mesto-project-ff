@@ -1,4 +1,3 @@
- 
 function showInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
@@ -14,18 +13,15 @@ function hideInputError(formElement, inputElement, config) {
 }
 
 function checkInputValidity(formElement, inputElement, config) {
-  const regex = /^[a-zA-Zа-яА-ЯёЁ\s-]+$/;
-
-  if (inputElement.name === 'name' || inputElement.name === 'description' || inputElement.name === 'title') {
-    if (!regex.test(inputElement.value)) {
-      inputElement.setCustomValidity(inputElement.dataset.errorMessage);
-    } else {
-      inputElement.setCustomValidity('');
-    }
+  // Если ошибка по паттерну, то показываем кастомное сообщение
+  if (inputElement.validity.patternMismatch) {
+    const customMessage = inputElement.dataset.errorMessage || ''; // Берем сообщение из атрибута data-error-message
+    inputElement.setCustomValidity(customMessage);
   } else {
-    inputElement.setCustomValidity('');
+    inputElement.setCustomValidity(''); // Если ошибки нет, сбрасываем кастомное сообщение
   }
 
+  // Показываем ошибку, если поле невалидно
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, config);
   } else {
@@ -51,12 +47,13 @@ function setEventListeners(formElement, config) {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
+  // Проверим состояние кнопки при инициализации
   toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      checkInputValidity(formElement, inputElement, config);
-      toggleButtonState(inputList, buttonElement, config);
+      checkInputValidity(formElement, inputElement, config); // обязательно первым
+      toggleButtonState(inputList, buttonElement, config);   // затем обновим кнопку
     });
   });
 }
@@ -73,8 +70,8 @@ export function clearValidation(formElement, config) {
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
   inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement, config);
-    inputElement.setCustomValidity('');
+    inputElement.setCustomValidity(''); // Сброс кастомных сообщений
+    hideInputError(formElement, inputElement, config); // Скрытие ошибок
   });
 
   toggleButtonState(inputList, buttonElement, config);
